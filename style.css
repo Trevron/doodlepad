@@ -19,9 +19,17 @@ header {
     float: left;
     margin: 0;
     padding: 0;
-    background-color: red;
+    background-color: lightgray;
 }
 
 .gridSquare:hover {
     background-color: black;
+}
+
+#currentColor {
+    float: right;
+    background-color: black;
+    margin-left: 8px;
+    width: 16px;
+    height: 16px;
 }

@@ -4,12 +4,14 @@ let isCanvas = false;
 let currentColor = 'black';
 
 const newButton = document.getElementById('newCanvas');
+const colorButton = document.getElementById('colorButton')
+const colorDiv = document.getElementById('currentColor');
 const canvas = document.querySelector('.canvas');
 
 
 function createNewCanvas() {
     if (isCanvas) {
-        
+        location.reload();
     }
 
     canvasWidth = prompt('Enter canvas width:', 32);
@@ -27,7 +29,15 @@ function createNewCanvas() {
         canvas.appendChild(gridSquare);
     }
 
+    newButton.textContent='Reload Page';
     isCanvas = true;
+}
+
+function changeColor() {
+    currentColor = prompt('Enter a color name', 'black');
+    colorDiv.setAttribute('style', 'background-color: ' 
+            + currentColor + ';');
+    
 }
 
 function drawPixel(pixelTarget) {
@@ -44,3 +54,4 @@ canvas.addEventListener('mousedown', function (e) {
 });
 
 newButton.addEventListener('click', createNewCanvas);
+colorButton.addEventListener('click', changeColor);
