@@ -34,7 +34,7 @@ function createNewCanvas() {
 }
 
 function changeColor() {
-    currentColor = prompt('Enter a color name', 'black');
+    currentColor = prompt('Enter a color name', currentColor);
     colorDiv.setAttribute('style', 'background-color: ' 
             + currentColor + ';');
     
