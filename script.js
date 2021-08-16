@@ -1,14 +1,17 @@
 let canvasWidth = 0;
 let canvasHeight = 0;
+let isCanvas = false;
+let currentColor = 'black';
 
 const newButton = document.getElementById('newCanvas');
-
 const canvas = document.querySelector('.canvas');
 
 
-
-
 function createNewCanvas() {
+    if (isCanvas) {
+        
+    }
+
     canvasWidth = prompt('Enter canvas width:', 32);
     canvasHeight = prompt('Enter canvas height:', 32);
 
@@ -23,6 +26,21 @@ function createNewCanvas() {
         gridSquare.classList.add('gridSquare');
         canvas.appendChild(gridSquare);
     }
+
+    isCanvas = true;
 }
+
+function drawPixel(pixelTarget) {
+    pixelTarget.setAttribute('style', 'background-color: ' 
+            + currentColor + ';' );
+}
+
+canvas.addEventListener('mousedown', function (e) {
+    console.log(e.target.classList[0]);
+    if (e.target.classList[0] === 'gridSquare') {
+        drawPixel(e.target);
+    }
+    
+});
 
 newButton.addEventListener('click', createNewCanvas);

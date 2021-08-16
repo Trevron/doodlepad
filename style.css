@@ -1,19 +1,27 @@
 body {
-    min-width: 160px;
-    min-height: 160px;
     margin: auto;
 }
 
+header {
+    margin: 16px 0px;
+}
+
 .canvas {
+    border-style: solid;
+    margin: auto;
+    padding: auto;
     display: grid;
     /* grid-template-columns: repeat(1, 16px);
     grid-template-rows: repeat(1, 16px); */
 }
 
 .gridSquare {
-
     float: left;
     margin: 0;
     padding: 0;
     background-color: red;
+}
+
+.gridSquare:hover {
+    background-color: black;
 }
