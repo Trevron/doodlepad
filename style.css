@@ -23,6 +23,8 @@ header {
 
 h1 {
     color:rgb(233, 203, 126);
+    font-family:'Courier New', Courier, monospace;
+    text-shadow: goldenrod 1px 0 10px;
 }
 
 .canvas {
@@ -58,7 +60,7 @@ h1 {
 }
 
 .selected {
-    background-color:rgb(27, 31, 75);
+    background-color:rgb(44, 66, 100);
 }
 
 button {

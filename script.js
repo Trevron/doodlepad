@@ -42,7 +42,6 @@ function createNewCanvas() {
     isCanvas = true;
 }
 
-
 function changeColor() {
     currentColor = prompt('Enter a color name', currentColor);
     colorDiv.setAttribute('style', 'background-color: ' 
@@ -69,20 +68,6 @@ function drawPixel(pixelTarget) {
         
     }   
 }
-
-canvas.addEventListener('mousedown', (e) => {
-    isClicking = true;
-    if(e.target.classList[0] === 'gridSquare') {
-        drawPixel(e.target);
-    }
-});
-canvas.addEventListener('mouseup', () => isClicking = false);
-
-canvas.addEventListener('mouseover', function (e) {
-    if(e.target.classList[0] === 'gridSquare' && isClicking) {
-        drawPixel(e.target);
-    }
-});
 
 function toolSelect(tool) {
     switch (tool) {
@@ -122,7 +107,8 @@ function saveImage() {
     let selectedColor = 'green';
     renderer.setAttribute('width', canvasWidth * 16);
     renderer.setAttribute('height', canvasHeight * 16)
-    // This is super broken
+    
+    // Convert drawing into a canvas element that opens in a new window
     for (let i = 0; i < gridSquares.length; i++) {
         if (gridSquares[i].style.backgroundColor === '') {
             selectedColor = 'white';
@@ -130,25 +116,42 @@ function saveImage() {
             selectedColor = gridSquares[i].style.backgroundColor; 
         }
         context.fillStyle = selectedColor;
-        context.fillRect(i % canvasWidth * 16, Math.trunc(i / canvasWidth) * 16, 16, 16);
-        
+        context.fillRect(i % canvasWidth * 16, Math.trunc(i / canvasWidth) * 16, 16, 16);   
     }
 
     let newWindow = window.open('', '', 'width = ' + canvasWidth * 16 + ', height = ' + canvasHeight * 16);
     newWindow.document.body.appendChild(renderer);
-    console.log('Image saved!');
-    
 }
 
+canvas.addEventListener('mousedown', (e) => {
+    isClicking = true;
+    if(e.target.classList[0] === 'gridSquare') {
+        drawPixel(e.target);
+    }
+});
+
+canvas.addEventListener('mouseup', () => isClicking = false);
+
+canvas.addEventListener('mouseover', function (e) {
+    if(e.target.classList[0] === 'gridSquare' && isClicking) {
+        drawPixel(e.target);
+    }
+});
+
 newButton.addEventListener('click', createNewCanvas);
+
 colorButton.addEventListener('click', changeColor);
+
 brushButton.addEventListener('click', function () {
     toolSelect('brush');
 });
+
 eraserButton.addEventListener('click', function () {
     toolSelect('eraser');
 });
+
 fillButton.addEventListener('click', function () {
     toolSelect('fill');
 });
+
 saveButton.addEventListener('click', saveImage);
