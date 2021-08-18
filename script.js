@@ -12,6 +12,7 @@ const colorButton = document.getElementById('colorButton')
 const brushButton = document.getElementById('brushTool');
 const fillButton = document.getElementById('fillTool');
 const eraserButton = document.getElementById('eraserTool');
+const saveButton = document.getElementById('saveImage');
 const colorDiv = document.getElementById('currentColor');
 const canvas = document.querySelector('.canvas');
 
@@ -114,6 +115,31 @@ function toolSelect(tool) {
     }
 }
 
+function saveImage() {
+    const renderer = document.createElement('canvas');
+    const context = renderer.getContext('2d');
+    const gridSquares = document.querySelectorAll('.gridSquare');
+    let selectedColor = 'green';
+    renderer.setAttribute('width', canvasWidth * 16);
+    renderer.setAttribute('height', canvasHeight * 16)
+    // This is super broken
+    for (let i = 0; i < gridSquares.length; i++) {
+        if (gridSquares[i].style.backgroundColor === '') {
+            selectedColor = 'white';
+        } else {
+            selectedColor = gridSquares[i].style.backgroundColor; 
+        }
+        context.fillStyle = selectedColor;
+        context.fillRect(i % canvasWidth * 16, Math.trunc(i / canvasWidth) * 16, 16, 16);
+        
+    }
+
+    let newWindow = window.open('', '', 'width = ' + canvasWidth * 16 + ', height = ' + canvasHeight * 16);
+    newWindow.document.body.appendChild(renderer);
+    console.log('Image saved!');
+    
+}
+
 newButton.addEventListener('click', createNewCanvas);
 colorButton.addEventListener('click', changeColor);
 brushButton.addEventListener('click', function () {
@@ -125,3 +151,4 @@ eraserButton.addEventListener('click', function () {
 fillButton.addEventListener('click', function () {
     toolSelect('fill');
 });
+saveButton.addEventListener('click', saveImage);
