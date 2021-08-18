@@ -38,6 +38,9 @@ header {
 }
 
 #currentColor {
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
     float: right;
     background-color: black;
     margin-left: 8px;
