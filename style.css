@@ -11,9 +11,18 @@ body {
     background-color: rgb(33, 34, 54);
 }
 
-header {
-    margin: 16px 0%;
+.toolbar {
+    margin: auto;
+    width: 400px;
+}
 
+header {
+    margin: 16px auto; 
+    text-align: center;
+}
+
+h1 {
+    color:rgb(233, 203, 126);
 }
 
 .canvas {
