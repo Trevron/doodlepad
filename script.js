@@ -56,7 +56,17 @@ function drawPixel(pixelTarget) {
         pixelTarget.setAttribute('style', 'background-color: ' 
             + currentColor + ';' );
     }
+    if (filling) {
+        const selectedColor = pixelTarget.style.backgroundColor;
+        const gridSquares = document.querySelectorAll('.gridSquare');
     
+        for (let i = 0; i < gridSquares.length; i++) {
+            if (gridSquares[i].style.backgroundColor === selectedColor) {
+                gridSquares[i].style.backgroundColor = currentColor;
+            }
+        }
+        
+    }   
 }
 
 canvas.addEventListener('mousedown', (e) => {
@@ -82,7 +92,6 @@ function toolSelect(tool) {
             brushButton.classList.add('selected');
             eraserButton.classList.remove('selected');
             fillButton.classList.remove('selected');
-            console.log('Brush selected');
             break;
         case 'eraser':
             drawing = false;
@@ -91,7 +100,6 @@ function toolSelect(tool) {
             eraserButton.classList.add('selected');
             brushButton.classList.remove('selected');
             fillButton.classList.remove('selected');
-            console.log('Eraser selected');
             break;
         case 'fill':
             drawing = false;
@@ -100,7 +108,6 @@ function toolSelect(tool) {
             fillButton.classList.toggle('selected');
             brushButton.classList.remove('selected');
             eraserButton.classList.remove('selected');
-            console.log('Fill selected');
             break;
         default:
             alert('There was an error!');
