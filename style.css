@@ -1,13 +1,16 @@
 body {
     margin: auto;
+    background-color: rgb(33, 34, 54);
 }
 
 header {
-    margin: 16px 0px;
+    margin: 16px 0%;
+
 }
 
 .canvas {
     border-style: solid;
+    border-color: rgb(14, 16, 39);
     margin: auto;
     padding: auto;
     display: grid;
@@ -19,7 +22,7 @@ header {
     float: left;
     margin: 0;
     padding: 0;
-    background-color: lightgray;
+    background-color: white;
 }
 
 .gridSquare:hover {
@@ -32,4 +35,12 @@ header {
     margin-left: 8px;
     width: 16px;
     height: 16px;
+}
+
+button {
+    background-color:rgb(14, 16, 39);
+    color: rgb(233, 203, 126);
+    height: 32px;
+    font-weight: bold;
+    border-color: rgb(14, 16, 39);
 }

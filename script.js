@@ -2,6 +2,7 @@ let canvasWidth = 0;
 let canvasHeight = 0;
 let isCanvas = false;
 let currentColor = 'black';
+let isClicking = false;
 
 const newButton = document.getElementById('newCanvas');
 const colorButton = document.getElementById('colorButton')
@@ -20,7 +21,8 @@ function createNewCanvas() {
     // Add grid rules to css style
     canvas.setAttribute('style', 'grid-template-columns: repeat(' 
             + canvasWidth + ', 16px); grid-template-rows: repeat(' 
-            + canvasHeight + ', 16px);');
+            + canvasHeight + ', 16px); width: ' 
+            + canvasWidth * 16 + 'px;');
     
     // Populate divs
     for (let i = 0; i < canvasWidth * canvasHeight; i++){
@@ -28,6 +30,7 @@ function createNewCanvas() {
         gridSquare.classList.add('gridSquare');
         canvas.appendChild(gridSquare);
     }
+
 
     newButton.textContent='Reload Page';
     isCanvas = true;
@@ -37,7 +40,6 @@ function changeColor() {
     currentColor = prompt('Enter a color name', currentColor);
     colorDiv.setAttribute('style', 'background-color: ' 
             + currentColor + ';');
-    
 }
 
 function drawPixel(pixelTarget) {
@@ -45,13 +47,21 @@ function drawPixel(pixelTarget) {
             + currentColor + ';' );
 }
 
-canvas.addEventListener('mousedown', function (e) {
-    console.log(e.target.classList[0]);
-    if (e.target.classList[0] === 'gridSquare') {
+canvas.addEventListener('mousedown', (e) => {
+    isClicking = true;
+    if(e.target.classList[0] === 'gridSquare') {
         drawPixel(e.target);
     }
-    
 });
+canvas.addEventListener('mouseup', () => isClicking = false);
+
+canvas.addEventListener('mouseover', function (e) {
+    if(e.target.classList[0] === 'gridSquare' && isClicking) {
+        drawPixel(e.target);
+    }
+});
+
+
 
 newButton.addEventListener('click', createNewCanvas);
 colorButton.addEventListener('click', changeColor);
