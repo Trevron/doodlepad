@@ -1,3 +1,11 @@
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+ }
+
 body {
     margin: auto;
     background-color: rgb(33, 34, 54);
@@ -37,6 +45,10 @@ header {
     height: 16px;
 }
 
+.selected {
+    background-color:rgb(27, 31, 75);
+}
+
 button {
     background-color:rgb(14, 16, 39);
     color: rgb(233, 203, 126);
@@ -44,3 +56,4 @@ button {
     font-weight: bold;
     border-color: rgb(14, 16, 39);
 }
+
