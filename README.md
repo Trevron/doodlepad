@@ -1,5 +1,8 @@
 # doodlepad
-Simple etch-a-sketch webapp
-<h1>DOODLEPAD</h1>
+A simple javascript doodling application with the following features:
+- Customizable canvas size.
+- Brush, erase, and fill toolset.
+- Fill functions as a color replacer.
+- Text based color selection. (Will eventually turn into RGB color picker...)
+- Ability to save doodles.
 
-Simple Javascript drawing experimentation!
