@@ -33,8 +33,6 @@ h1 {
     margin: auto;
     padding: auto;
     display: grid;
-    /* grid-template-columns: repeat(1, 16px);
-    grid-template-rows: repeat(1, 16px); */
 }
 
 .gridSquare {
@@ -43,10 +41,6 @@ h1 {
     padding: 0;
     background-color: white;
 }
-
-/* .gridSquare:hover {
-    background-color: black;
-} */
 
 #currentColor {
     border-width: 1px;
@@ -75,4 +69,3 @@ button {
     border-style: solid;
     border-color: red;
 }
-
