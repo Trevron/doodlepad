@@ -19,7 +19,11 @@ const canvas = document.querySelector('.canvas');
 
 function createNewCanvas() {
     if (isCanvas) {
-        location.reload();
+        if (confirm('You will lose any changes. Are you sure you want to continue?')) {
+            location.reload();
+        } else {
+            return;
+        }
     }
 
     canvasWidth = prompt('Enter canvas width:', 32);
@@ -122,7 +126,7 @@ function saveImage() {
     let newWindow = window.open('', '', 'width = ' + canvasWidth * 16 + ', height = ' + canvasHeight * 16);
     newWindow.document.body.appendChild(renderer);
 }
-
+// Initial
 canvas.addEventListener('mousedown', (e) => {
     isClicking = true;
     if(e.target.classList[0] === 'gridSquare') {
@@ -132,12 +136,24 @@ canvas.addEventListener('mousedown', (e) => {
 
 canvas.addEventListener('mouseup', () => isClicking = false);
 
+// Hover enable and line painting
 canvas.addEventListener('mouseover', function (e) {
     if(e.target.classList[0] === 'gridSquare' && isClicking) {
+        e.target.classList.add('hovering');
         drawPixel(e.target);
+    } else if (e.target.classList[0] === 'gridSquare') {
+        e.target.classList.add('hovering');
     }
 });
 
+// Hover disable
+canvas.addEventListener('mouseout', function (e) {
+    if(e.target.classList[0] === 'gridSquare') {
+        e.target.classList.remove('hovering');
+    }
+});
+
+// Button events
 newButton.addEventListener('click', createNewCanvas);
 
 colorButton.addEventListener('click', changeColor);
@@ -155,3 +171,4 @@ fillButton.addEventListener('click', function () {
 });
 
 saveButton.addEventListener('click', saveImage);
+

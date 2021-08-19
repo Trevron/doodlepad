@@ -44,9 +44,9 @@ h1 {
     background-color: white;
 }
 
-.gridSquare:hover {
+/* .gridSquare:hover {
     background-color: black;
-}
+} */
 
 #currentColor {
     border-width: 1px;
@@ -68,6 +68,11 @@ button {
     color: rgb(233, 203, 126);
     height: 32px;
     font-weight: bold;
-    border-color: rgb(14, 16, 39);
+    border-color: rgb(26, 34, 131);
+}
+
+.hovering {
+    border-style: solid;
+    border-color: red;
 }
 
