@@ -6,3 +6,5 @@ A simple javascript doodling application with the following features:
 - Text based color selection. (Will eventually turn into RGB color picker...)
 - Ability to save doodles.
 
+Check it out <a href="https://trevron.github.io/doodlepad/">here</a>.
+
