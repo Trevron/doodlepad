@@ -8,7 +8,7 @@ let erasing = false;
 let filling = false;
 
 const newButton = document.getElementById('newCanvas');
-const colorButton = document.getElementById('colorButton')
+const colorInput = document.getElementById('colorInput');
 const brushButton = document.getElementById('brushTool');
 const fillButton = document.getElementById('fillTool');
 const eraserButton = document.getElementById('eraserTool');
@@ -47,7 +47,7 @@ function createNewCanvas() {
 }
 
 function changeColor() {
-    currentColor = prompt('Enter a color name', currentColor);
+    currentColor = colorInput.value;
     colorDiv.setAttribute('style', 'background-color: ' 
             + currentColor + ';');
 }
@@ -156,7 +156,7 @@ canvas.addEventListener('mouseout', function (e) {
 // Button events
 newButton.addEventListener('click', createNewCanvas);
 
-colorButton.addEventListener('click', changeColor);
+colorInput.addEventListener('change', changeColor);
 
 brushButton.addEventListener('click', function () {
     toolSelect('brush');
