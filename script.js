@@ -53,6 +53,7 @@ function changeColor() {
 }
 
 function drawPixel(pixelTarget) {
+    
     if (erasing) {
         pixelTarget.setAttribute('style', 'background-color: white;');
     }
@@ -130,6 +131,7 @@ function saveImage() {
 canvas.addEventListener('mousedown', (e) => {
     isClicking = true;
     if(e.target.classList[0] === 'gridSquare') {
+        changeColor();
         drawPixel(e.target);
     }
 });
@@ -156,7 +158,7 @@ canvas.addEventListener('mouseout', function (e) {
 // Button events
 newButton.addEventListener('click', createNewCanvas);
 
-colorInput.addEventListener('change', changeColor);
+//colorInput.addEventListener('change', changeColor);
 
 brushButton.addEventListener('click', function () {
     toolSelect('brush');
