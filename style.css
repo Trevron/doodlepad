@@ -8,28 +8,36 @@
 
 body {
     margin: auto;
-    background-color: rgb(33, 34, 54);
+    background-color: rgba(6, 0, 12, .70);
 }
 
 .toolbar {
     margin: auto;
     width: 400px;
+    
 }
 
 header {
     margin: 16px auto; 
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
-    color:rgb(233, 203, 126);
-    font-family:'Courier New', Courier, monospace;
-    text-shadow: goldenrod 1px 0 10px;
+    color: white;
+    font-family: 'DIN Condensed', 'Impact', 'Arial';
+    background-color: black;
+    font-size: 64px;
+    margin: 16px;
+    padding: 4px;
+    border-radius: 8px;
 }
 
 .canvas {
     border-style: solid;
-    border-color: rgb(14, 16, 39);
+    border-color: black;
     margin: auto;
     padding: auto;
     display: grid;
@@ -42,30 +50,32 @@ h1 {
     background-color: white;
 }
 
-#currentColor {
-    border-width: 1px;
-    border-style: solid;
-    border-color: white;
-    float: right;
-    background-color: black;
-    margin-left: 8px;
-    width: 16px;
-    height: 16px;
-}
+
 
 .selected {
-    background-color:rgb(44, 66, 100);
+    border-bottom: 4px solid white;
 }
 
 button {
-    background-color:rgb(14, 16, 39);
-    color: rgb(233, 203, 126);
+    background-color: black;
+    color: white;
     height: 32px;
     font-weight: bold;
-    border-color: rgb(26, 34, 131);
+    border: 0px;
+    border-radius: 4px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: darkgray;
 }
 
 .hovering {
     border-style: solid;
     border-color: red;
+}
+
+#colorInput {
+    position: relative;
+    top: 4px;
 }
